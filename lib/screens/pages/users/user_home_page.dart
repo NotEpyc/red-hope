@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:io';
 import 'dart:async';
 import '../../../theme/theme.dart';
 import '../../../utils/responsive_utils.dart';
@@ -47,8 +46,6 @@ class _UserHomePageState extends State<UserHomePage> with TickerProviderStateMix
   String _userName = '';
   String? _userImageUrl;
   bool _isLoading = true;
-  bool _isLoadingRequests = false;
-  String? _loadError;
   Widget? _searchPage;
   Widget? _requestsPage;
   Widget? _chatPage;

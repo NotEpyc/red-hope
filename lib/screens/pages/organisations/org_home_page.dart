@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
 import '../../../theme/theme.dart';
-import '../../../utils/responsive_utils.dart';
 import '../../../widgets/carousel/custom_carousel.dart';
 import '../../../services/notification_service.dart';
 import '../../../widgets/common/custom_app_bar.dart';

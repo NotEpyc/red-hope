@@ -30,7 +30,6 @@ class _AdminHomePageState extends State<AdminHomePage> with TickerProviderStateM
   bool _isEditingNews = false;
   int _userCount = 0;
   int _orgCount = 0;
-  int _unreadNotifications = 2; // Start with some dummy unread notifications
 
   @override
   void initState() {
