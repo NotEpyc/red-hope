@@ -1,0 +1,31 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "redhope-370df",
+          "appId": "1:973440218316:android:893789d9b21a4263383e69",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "redhope-370df",
+          "configurations": {
+            "android": "1:973440218316:android:893789d9b21a4263383e69",
+            "ios": "1:973440218316:ios:93fa6c36b57a6cda383e69",
+            "macos": "1:973440218316:ios:93fa6c36b57a6cda383e69",
+            "web": "1:973440218316:web:12a2fc381ff6e9c9383e69",
+            "windows": "1:973440218316:web:e4987fe58ff65e05383e69"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "nam5",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

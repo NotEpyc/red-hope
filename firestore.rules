@@ -1,0 +1,57 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      // Allow reading user documents if authenticated
+      allow read: if request.auth != null;
+      
+      // Users can create their own document during signup, enforcing the document ID matches their auth UID
+      allow create: if request.auth != null 
+        && userId == request.auth.uid
+        && request.resource.data.keys().hasAll(['name', 'email', 'address', 'phone', 'gender', 'blood_grp', 'age'])
+        && request.resource.data.name is string
+        && request.resource.data.email is string
+        && request.resource.data.address is string
+        && request.resource.data.phone is number
+        && request.resource.data.gender is string
+        && request.resource.data.blood_grp is string
+        && request.resource.data.age is number;
+      
+      // Users can only update their own document
+      allow update: if request.auth != null && userId == request.auth.uid;
+    }
+
+    match /organisations/{orgId} {
+      // Allow reading organization documents if authenticated
+      allow read: if request.auth != null;
+      
+      // Organizations can create their own document during signup, enforcing the document ID matches their auth UID
+      allow create: if request.auth != null 
+        && orgId == request.auth.uid
+        && request.resource.data.keys().hasAll(['name', 'email', 'address', 'phone', 'type'])
+        && request.resource.data.name is string
+        && request.resource.data.email is string
+        && request.resource.data.address is string
+        && request.resource.data.phone is number
+        && request.resource.data.type is string;
+      
+      // Organizations can only update their own document
+      allow update: if request.auth != null && orgId == request.auth.uid;
+    }
+
+    match /user_roles/{email} {
+      // Allow reading role documents if authenticated
+      allow read: if request.auth != null;
+      
+      // Allow creating role documents during signup
+      allow create: if request.auth != null 
+        && request.resource.data.keys().hasAll(['role', 'uid', 'email', 'createdAt'])
+        && request.resource.data.role in ['user', 'org']
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.email == email;
+        
+      // Only allow updates by the owner
+      allow update: if request.auth != null 
+        && resource.data.uid == request.auth.uid;
+    }
+  }
+}
